@@ -26,6 +26,16 @@ class User extends Authenticatable
         'admin',
     ];
 
+    public function korpa()
+    {
+        return $this->hasMany(Korpa::class);
+    }
+
+    public function blog()
+    {
+        return $this->hasMany(Blog::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

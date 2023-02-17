@@ -21,8 +21,6 @@ return new class extends Migration
             $table->double('ukupnaCena');
             $table->integer('proizvod_id');
            // $table->foreign('proizvod_id')->references('id')->on('proizvod');
-            $table->integer('user_id');
-           // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

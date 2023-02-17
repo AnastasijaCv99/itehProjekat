@@ -10,4 +10,9 @@ class Blog extends Model
     use HasFactory;
     protected $table = 'blog';
     public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
