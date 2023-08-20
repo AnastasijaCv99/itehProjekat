@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Relations\HasMany;
+ 
 
 class Cafe extends Model
 {
@@ -19,18 +21,20 @@ class Cafe extends Model
         'type',
     ];
 
-    public function user(): HasMany
+    public function user()
     {
-        return $this->hasMany(User::class);
+        //return $this->hasMany(User::class, 'user_id');
+        //'App\Models\Cafe'
+        return $this->hasMany('App\Models\User');
     }
 
-    public function menu(): HasMany
+    public function menu()
     {
-        return $this->hasMany(Menu::class);
+        return $this->hasMany('App\Models\Menu');
     }
 
-    public function tableDesk(): HasMany
+    public function tableDesk()
     {
-        return $this->hasMany(TableDesk::class);
+        return $this->hasMany('App\Models\TableDesk');
     }
 }

@@ -14,13 +14,13 @@ class Menu extends Model
         'menuName',
     ];
 
-    public function cafe(): BelongsTo
+    public function cafe()
 	{
-		return $this->belongsTo(Cafe::class);
+		return $this->belongsTo('App\Models\Cafe');
 	}
 
-    public function menuItems(): HasMany
+    public function menuItems()
     {
-        return $this->hasMany(MenuItems::class);
+        return $this->hasMany('App\Models\MenuItems');
     }
 }

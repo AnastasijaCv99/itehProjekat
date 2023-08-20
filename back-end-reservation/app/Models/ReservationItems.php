@@ -15,8 +15,8 @@ class ReservationItems extends Model
         'final_price',
     ];
 
-    public function reservation(): BelongsTo
+    public function reservation()
 	{
-		return $this->belongsTo(Reservation::class);
+		return $this->belongsTo('App\Models\Reservation');
 	}
 }

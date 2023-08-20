@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
@@ -22,6 +24,7 @@ class User extends Authenticatable
         'lastName',
         'email',
         'isAdmin',
+        'cafe_id'
     ];
 
     /**
@@ -44,8 +47,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function cafe(): BelongsTo
-	{
-		return $this->belongsTo(Cafe::class);
+    public function cafe()
+    {
+		//return $this->belongsTo(Cafe::class, 'user_id', 'id');
+        return $this->belongsTo('App\Models\Cafe');
+        
 	}
 }

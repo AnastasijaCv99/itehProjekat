@@ -14,13 +14,13 @@ class Reservation extends Model
         'price',
     ];
 
-    public function tableDesk(): BelongsTo
+    public function tableDesk()
 	{
-		return $this->belongsTo(TableDesk::class);
+		return $this->belongsTo('App\Models\TableDesk');
 	}
 
-    public function reservation(): HasMany
+    public function reservation()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany('App\Models\Reservation');
     }
 }
