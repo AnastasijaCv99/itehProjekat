@@ -15,4 +15,9 @@ class MenuItems extends Model
         'ingredients',
         'price',
     ];
+
+    public function menu(): BelongsTo
+	{
+		return $this->belongsTo(Menu::class);
+	}
 }

@@ -13,4 +13,14 @@ class Menu extends Model
     protected $fillable = [
         'menuName',
     ];
+
+    public function cafe(): BelongsTo
+	{
+		return $this->belongsTo(Cafe::class);
+	}
+
+    public function menuItems(): HasMany
+    {
+        return $this->hasMany(MenuItems::class);
+    }
 }

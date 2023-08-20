@@ -14,4 +14,14 @@ class TableDesk extends Model
         'numberOfSeats',
     ];
 
+    public function cafe(): BelongsTo
+	{
+		return $this->belongsTo(Cafe::class);
+	}
+
+    public function reservation(): HasMany
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
 }

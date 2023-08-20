@@ -23,4 +23,14 @@ class Cafe extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function menu(): HasMany
+    {
+        return $this->hasMany(Menu::class);
+    }
+
+    public function tableDesk(): HasMany
+    {
+        return $this->hasMany(TableDesk::class);
+    }
 }

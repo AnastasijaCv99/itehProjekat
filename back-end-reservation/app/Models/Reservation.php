@@ -13,4 +13,14 @@ class Reservation extends Model
     protected $fillable = [
         'price',
     ];
+
+    public function tableDesk(): BelongsTo
+	{
+		return $this->belongsTo(TableDesk::class);
+	}
+
+    public function reservation(): HasMany
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }
