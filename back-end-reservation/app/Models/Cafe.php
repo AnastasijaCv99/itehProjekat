@@ -18,4 +18,9 @@ class Cafe extends Model
         'numberOfTables',
         'type',
     ];
+
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }
