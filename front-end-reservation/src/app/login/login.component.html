@@ -1,0 +1,23 @@
+<p>register works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()"> 
+<div class="example-container">
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="email" required>
+      <!--<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input matInput placeholder="*********" formControlName="password" required>
+     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+  </div>
+
+  <div class="example-label"></div>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary">Login</button>
+  </div>
+</form>
