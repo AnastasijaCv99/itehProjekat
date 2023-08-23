@@ -31,7 +31,7 @@ export class LoginComponent {
   onLogin(){
     console.log(this.loginForm.valid);
     console.log(this.loginForm.value);
-    if (this.loginForm.valid) this.auth.login(this.loginForm.value).subscribe((res) => console.log(res));
+    if (this.loginForm.valid) this.auth.login(this.loginForm.value).subscribe((res) => localStorage.setItem('res', res.access_token));
     
   }
 }
