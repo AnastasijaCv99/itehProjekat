@@ -1,5 +1,5 @@
 export interface User {
-    cafeId: BigInteger,
+    cafeId: Number,
     firstName: string,
     lastName: string,
     email: string,

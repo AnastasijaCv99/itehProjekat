@@ -1,0 +1,88 @@
+
+  <mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="This field is required.">
+      <!-- <form [formGroup]="firstFormGroup"> -->  
+      <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()"> 
+        <ng-template matStepLabel>Object information</ng-template>
+<!-- object infos - first page -->
+            <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="example-full-width">
+                  <mat-label>Name of the cafe/restaurant</mat-label>
+                  <input matInput matInput placeholder="Ex. TimeStory" formControlName="nameCtrl" required>
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">      
+                      <mat-label>Type of the object</mat-label>
+                      <mat-select [(ngModel)]="selectedValue" name="types" formControlName="typeCtrl">
+                        <mat-option *ngFor="let types of typess" [value]="types.value">
+                          {{types.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field></td>
+              </tr></table>
+              <p>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Address</mat-label>
+                  <textarea matInput placeholder="Ex. 100 Main St" formControlName="addressCtrl"></textarea>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Owner first and last name</mat-label>
+                  <textarea matInput formControlName="ownerCtrl"></textarea>
+                </mat-form-field>
+              </p>
+            
+              <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="example-full-width">
+                  <mat-label>Bank acount number</mat-label>
+                  <input matInput placeholder="2720756255634083" formControlName="numberCtrl">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width">
+                  <mat-label>Number of tables</mat-label>
+                  <input matInput placeholder="10" formControlName="tablesCtrl">
+                </mat-form-field></td>
+              </tr></table>
+            
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+<!-- admin infos - second page :: ime, prezime, username, password,-->
+    <mat-step [stepControl]="secondFormGroup" errorMessage="This field is required.">
+      <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit2()">
+        <ng-template matStepLabel>Admin user</ng-template>
+          <p>
+            <mat-form-field class="example-full-width">
+              <mat-label>First name</mat-label>
+              <input matInput formControlName="nameCtrl">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Last name</mat-label>
+              <input matInput formControlName="lastNameCtrl">
+            </mat-form-field>
+          </p>
+        
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="pat@example.com" formControlName="emailCtrl">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="passwordCtrl">
+            </mat-form-field></td>
+          </tr></table>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are all set-up.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button>Submit</button>
+      </div>
+    </mat-step>
+  </mat-stepper>

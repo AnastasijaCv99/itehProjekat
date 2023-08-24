@@ -22,7 +22,8 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'firstName' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255',
             'email' => 'required|string|max:255|email|unique:users',
             'password' => 'required|string|min:8'
         ]);
@@ -32,9 +33,13 @@ class UserController extends Controller
             return response()->json($validator->errors());
 
         $user = User::create([
-            'name' => $request->name,
+            'first_name' => $request->firstName,
+            'last_name' => $request->lastName,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            //'password' => Hash::make($request->password),
+            'password' => $request->password,
+            'is_admin' => $request->isAdmin,
+            'cafe_id' => $request->cafeId,
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;

@@ -9,12 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RegisterComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

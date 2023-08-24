@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\CafeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,7 +19,9 @@ use App\Http\Controllers\UserController;
     return $request->user();
 });*/
 
-Route::post('/register', [UserController::class, 'register']);
+Route::post('/register/user', [UserController::class, 'register']);
+Route::post('/register/cafe', [CafeController::class, 'register']);
+
 Route::post('/login', [UserController::class, 'login']);
 
 

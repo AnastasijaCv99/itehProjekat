@@ -12,14 +12,16 @@ class Cafe extends Model
     use HasFactory;
     public $table = "cafes";
 
-    protected $fillable = [
+    /*protected $fillable = [
         'title',
         'address',
-        'ownerName',
-        'bankAccountNumber',
-        'numberOfTables',
+        'owner_name',
+        'bank_account_number',
+        'number_of_tables',
         'type',
-    ];
+    ];*/
+
+    protected $guarded = [];
 
     public function user()
     {
