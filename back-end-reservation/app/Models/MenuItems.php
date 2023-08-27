@@ -11,9 +11,10 @@ class MenuItems extends Model
     public $table = "menu_items";
 
     protected $fillable = [
-        'drinkFoodTitle',
+        'drink_food_title',
         'ingredients',
         'price',
+        'menu_id'
     ];
 
     public function menu()

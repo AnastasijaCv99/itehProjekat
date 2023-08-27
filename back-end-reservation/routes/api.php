@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CafeController;
+use App\Http\Controllers\MenuController;
+use App\Http\Resources\CafeResource;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,10 +25,22 @@ use App\Http\Controllers\CafeController;
 
 Route::post('/register/user', [UserController::class, 'register']);
 Route::post('/register/cafe', [CafeController::class, 'register']);
+Route::post('/register/menu', [MenuController:: class, 'register']);
 
 Route::post('/login', [UserController::class, 'login']);
 
+Route::get('/menu', [MenuController:: class, 'getMenu']);
 
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    /*Route::get('/profile', function (Request $request) {
+        return auth()->user();
+    });*/
+
+    //Route::resource('cafe', CafeResource::class)->only(['update', 'store', 'destroy']);
+	Route::get('/profile', [UserController::Class, 'index']);
+    Route::post('/logout', [UserController::class, 'logout']);
+	Route::get('/menu/{id}', [MenuController:: class, 'cafeMenu']); 
+});
 /*
     -/: 
 		unosi podatke za kafic/restoran (naziv/ulicu/pib/ostale finansijske stvari)

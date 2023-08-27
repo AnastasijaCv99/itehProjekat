@@ -1,9 +1,9 @@
 export interface Cafe {
-    id: Number,
+    id: number,
     title: string,
     address: string,
     ownerName: string,
-    bankAccountNumber: Number,
-    numberOfTables: Number,
-    type: string
-}
+    bankAccountNumber: number,
+    numberOfTables: number,
+    type: string,
+    }

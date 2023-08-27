@@ -1,5 +1,6 @@
 export interface User {
-    cafeId: Number,
+    id: number,
+    cafeId: number,
     firstName: string,
     lastName: string,
     email: string,

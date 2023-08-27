@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -15,7 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        //$users = User::all();
+        //return $users;
+        $users = DB::table('users')->get();// fetching data from the users table
+
         return $users;
     }
 
@@ -36,8 +41,8 @@ class UserController extends Controller
             'first_name' => $request->firstName,
             'last_name' => $request->lastName,
             'email' => $request->email,
-            //'password' => Hash::make($request->password),
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
+            //'password' => $request->password,
             'is_admin' => $request->isAdmin,
             'cafe_id' => $request->cafeId,
         ]);
@@ -55,9 +60,19 @@ class UserController extends Controller
             } else {
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return response()
-                ->json(['message' => 'Hi ' . $user->name . ', welcome to home', 'access_token' => $token, 'token_type' => 'Bearer',]);
+                ->json(['message' => 'Hi ' . $user->name . ', welcome to home', 'access_token' => $token, 'token_type' => 'Bearer', 'data' => $user]);
             }
     }
+
+    public function logout()
+    {
+        auth()->user()->tokens()->delete();
+        return [
+            'message' => 'You have successfully logged out and the token was successfully deleted'
+        ];
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */

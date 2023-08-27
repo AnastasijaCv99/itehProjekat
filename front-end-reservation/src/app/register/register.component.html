@@ -42,7 +42,7 @@
               </tr></table>
             
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
@@ -72,17 +72,57 @@
             </mat-form-field></td>
           </tr></table>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
+    <!-- menu infos - third page ::-->
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="This field is required.">
+      <form [formGroup]="thirdFormGroup" (ngSubmit)="onSubmit3()">
+        <ng-template matStepLabel>Menu</ng-template>
+          <p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Menu name</mat-label>
+              <input matInput placeholder="Hot drinks" formControlName="nameCtrl">
+            </mat-form-field>
+          </p>
+        
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+              <mat-label>Drink/food name</mat-label>
+              <input matInput placeholder="Espresso" formControlName="itemNameCtrl">
+            </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+              <mat-label>Price</mat-label>
+              <input matInput placeholder="200" formControlName="priceCtrl">
+            </mat-form-field></td>
+          </tr></table>
+          <p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="descCtrl" placeholder="Ingredients: coffee, milk...">
+            </mat-form-field>
+          </p>
+
+        <div>
+          <button mat-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+          <button mat-fab extended color="primary" class="button5" (ngSubmit)="onSubmit3()" onclick="add()">
+            <mat-icon>plus_one</mat-icon>
+            Add more
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- kraaj infos - 4. page ::-->
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>You are all set-up.</p>
+      <strong>You are all set-up.</strong>
+      <p> </p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button>Submit</button>
+        <button mat-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="finalSubmit()">Submit</button>
       </div>
     </mat-step>
   </mat-stepper>

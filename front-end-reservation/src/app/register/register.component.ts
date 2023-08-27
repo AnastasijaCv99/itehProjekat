@@ -11,6 +11,10 @@ import { User } from '../interfaces/user';
 import { Cafe } from '../interfaces/cafe';
 import { CafeService } from '../services/cafe.service';
 import { AuthService } from '../services/auth.service';
+import {MatIconModule} from '@angular/material/icon';
+import { MenuItem } from '../interfaces/menu-item';
+import { MenuItemService } from '../services/menu-item.service';
+import { Router } from '@angular/router';
 
 
 interface TypeOfCafe {
@@ -38,15 +42,18 @@ interface TypeOfCafe {
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    NgFor
+    NgFor,
+    MatIconModule,
   ],
   //imports: [FormsModule, MatFormFieldModule, MatSelectModule, NgFor, MatInputModule],
 })
 
 export class RegisterComponent {
 
+  formCounter: number = 1;
   selectedValue: string;
   user: User = {
+    id: 0,
     cafeId: 0,
     firstName: 'string',
     lastName: 'string',
@@ -64,6 +71,16 @@ export class RegisterComponent {
     numberOfTables: 2,
     type: 'caffe'
   };
+
+  menuItem: MenuItem = {
+    idItem: 0,
+    menuId: 0,
+    cafeId: 0,
+    menu_name: 'string',
+    drink_food_title: 'string',
+    ingredients: 'string',
+    price: 0
+  }
 
   cafeData: Cafe;
 
@@ -88,7 +105,16 @@ export class RegisterComponent {
     passwordCtrl: ['', [Validators.required, Validators.minLength(8)]],
   });
 
-  constructor(private _formBuilder: FormBuilder, private cafeService: CafeService, private userAuth: AuthService) {}
+  thirdFormGroup = this._formBuilder.group({
+    nameCtrl: ['', Validators.required],
+    itemNameCtrl: ['', Validators.required],
+    priceCtrl: ['', Validators.required],
+    descCtrl: ['', Validators.required],
+  });
+
+  constructor(private _formBuilder: FormBuilder, private cafeService: CafeService, 
+              private userAuth: AuthService, private menu: MenuItemService, 
+              private router: Router) {}
 
   onSubmit() {
 
@@ -140,9 +166,36 @@ export class RegisterComponent {
     } 
   }
 
+  onSubmit3() {
+      //da se skupe podatak za menu name, i podaci  za item naziv, sastojci i cena
+      //na back-u u kontroleru za menu nek se sacuva menu, vrati se id i odatle pozove konttroler za menu item
+      if (this.thirdFormGroup.valid) {
+        console.log(this.thirdFormGroup.value);
+        this.menuItem.menu_name = this.thirdFormGroup.value.nameCtrl as string;
+        this.menuItem.drink_food_title = this.thirdFormGroup.value.itemNameCtrl as string;
+        this.menuItem.ingredients = this.thirdFormGroup.value.descCtrl as string;
+        this.menuItem.price = this.thirdFormGroup.value.priceCtrl as unknown as number;
+        this.menuItem.cafeId = this.cafeData.id;
+        
+        this.menu.registerMenu(this.menuItem).subscribe(
+          (res) => {
+            console.log(res);
+          });
+      }
+  }// kraj onsubmti 3
+
+  add(){
+    this.formCounter++;
+  }
+
+  finalSubmit(){
+    if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid) {
+      //routerLink="login" routerLinkActive="active";
+      this.router.navigate(['login']);
+    };
+  }
+//
 }
 
-      //fali mi povratna vrednost odnosno treba mi id kafica
       //mora da se proveri ako nije zavrsena forma ova onda mora da se izbrise taj kafic iz baze 
-      //console.log(this.user.cafeId);
-      //(res) => this.user.cafeId=res.id
+      

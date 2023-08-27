@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  user: User;
   url:string = "http://localhost:8000/api/";
   constructor(private http:HttpClient) { }
 
@@ -19,6 +20,14 @@ registerUser(user: User): Observable<any> {
   console.log("register user: ");
   console.log(user);
   return this.http.post(`${this.url}register/user`, user);
+}
+
+getProfile(): Observable<any> {
+  return this.http.get(`${this.url}profile`);
+}
+
+logout(): Observable<any> {
+  return this.http.post(`${this.url}logout`, null);
 }
 
 }

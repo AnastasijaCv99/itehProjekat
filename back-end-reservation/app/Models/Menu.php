@@ -11,7 +11,8 @@ class Menu extends Model
     public $table = "menus";
 
     protected $fillable = [
-        'menuName',
+        'menu_name',
+        'cafe_id',
     ];
 
     public function cafe()
