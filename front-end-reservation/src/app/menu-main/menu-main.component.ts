@@ -21,9 +21,7 @@ export class MenuMainComponent {
   menuItem: MenuItems[];
 
     ngOnInit(): void{
-  
       this.menus = this.menus;
-      //this.getMenuItemsForMenu();
     }
   
     onClick(){
@@ -35,11 +33,19 @@ export class MenuMainComponent {
 
     getMenuItemsForMenu(id: number){
       //const idi = Number(this.route.snapshot.paramMap.get('id'));
-      
-      this.menuService.getMenuItems(id).subscribe((res) => {
+      if (localStorage.getItem('res')) {
+        this.menuService.getMenuItemsForWaiter(id).subscribe((res) => {
         this.menuItem = res;
         console.log(this.menuItem);
-      }) 
+        }) 
+      } else {
+        this.menuService.getMenuItemsForUser(id).subscribe((res) => {
+        this.menuItem = res;
+        console.log(this.menuItem);
+        }) 
+      }
+
+      
     }
 
 }

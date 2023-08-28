@@ -20,24 +20,28 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'waiter/home/:id',
+    path: 'home/waiter/:id',
     component: HomeComponent,
     canActivate: [authGuard],
     /*children: [{
       path: 'menu/:id',
       component: MenuItemComponent
     }]*/
-
   },
   {
-    path: 'waiter/home/:id/menu/:id',
+    path: 'home/waiter/:id/menu/:id',
     component: MenuItemComponent,
     canActivate: [authGuard],
   },
   {
+    //for regular user
+    path: 'home/:id',
+    component: HomeComponent
+  },
+  {
+    //for regular user
     path: 'home/:id/cart',
     component: CartComponent,
-    canActivate: [authGuard],
   }
 ];
 

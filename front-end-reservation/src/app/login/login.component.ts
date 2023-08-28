@@ -47,7 +47,7 @@ export class LoginComponent {
     //neka provera da res nije null prvo pa onda redirect
     if (localStorage.getItem('res')) {
       this.auth.setUser(this.user);
-      this.router.navigate(['waiter/home', this.cafeID]);
+      this.router.navigate(['home/waiter', this.cafeID]);
     } else this.router.navigate(['login']); //plus prikazi na ekranu da ima greska ono error nesto ili da su losi kredencijali
   
   }

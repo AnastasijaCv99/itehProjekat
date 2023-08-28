@@ -26,14 +26,18 @@ export class HomeComponent {
 
   getMenuForCafe(){
     const idc = Number(this.route.snapshot.paramMap.get('id'));
-    
-    this.menuService.getMenus(idc).subscribe((res) => {
-
-      this.menus = res.data;
-      console.log('menu items', this.menus);
-    }) 
+    if (localStorage.getItem('res')) {
+        this.menuService.getMenusForWaiter(idc).subscribe((res) => {
+        this.menus = res.data;
+        console.log('menu items', this.menus);
+      })
+    } else {
+        this.menuService.getMenusForUser(idc).subscribe((res) => {
+        this.menus = res.data;
+        console.log('menu items', this.menus);
+      })
+    }
   }
-
 
   userDefinition(){
     this.auth.selectedUser$.subscribe((value) => {
@@ -41,6 +45,5 @@ export class HomeComponent {
       console.log('proba da li radi ovo',this.user);
       if(this.user.is_admin==true) console.log('admin');
     });
-    
   }
 }

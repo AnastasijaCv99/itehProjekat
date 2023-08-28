@@ -17,11 +17,20 @@ export class MenuItemService {
     return this.http.post(`${this.url}register/menu`, menu);
   }
 
-  getMenus(id: number): Observable<any> {
+  getMenusForWaiter(id: number): Observable<any> {
     return this.http.get(`${this.url}cafe/${id}`);  //this id is id of a cafe
   }
 
-  getMenuItems(id: number): Observable<any> {
+  getMenusForUser(id: number): Observable<any> {
+    return this.http.get(`${this.url}home/${id}`);  //this id is id of a cafe
+  }
+
+  getMenuItemsForWaiter(id: number): Observable<any> {
     return this.http.get(`${this.url}menuItems/${id}`);  //this id is id of a menu
   }
+
+  getMenuItemsForUser(id: number): Observable<any> {
+    return this.http.get(`${this.url}home/menuItems/${id}`);  //this id is id of a menu
+  }
+
 }
