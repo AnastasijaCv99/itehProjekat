@@ -6,6 +6,7 @@ import { MenuMainComponent } from './menu-main/menu-main.component';
 import { authGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -19,17 +20,23 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'home/:id',
+    path: 'waiter/home/:id',
     component: HomeComponent,
     canActivate: [authGuard],
     /*children: [{
       path: 'menu/:id',
       component: MenuItemComponent
     }]*/
+
   },
   {
-    path: 'home/:id/menu/:id',
+    path: 'waiter/home/:id/menu/:id',
     component: MenuItemComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'home/:id/cart',
+    component: CartComponent,
     canActivate: [authGuard],
   }
 ];
