@@ -25,6 +25,7 @@ export class LoginComponent {
   constructor(private fb:FormBuilder, private auth:AuthService, private router:Router){}
 
   ngOnInit(): void{
+    localStorage.clear();
     this.loginForm = this.fb.group({
         email: ['', [Validators.email, Validators.required]],
         password: ['', [Validators.required]],
@@ -33,6 +34,7 @@ export class LoginComponent {
 
 
   onLogin(){
+    
     console.log(this.loginForm.valid);
     console.log(this.loginForm.value);
     if (this.loginForm.valid) this.auth.login(this.loginForm.value).subscribe((res) => {
