@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,15 @@ import { Observable } from 'rxjs';
 export class AuthService {
   user: User;
   url:string = "http://localhost:8000/api/";
+
+  private userLogged$ = new BehaviorSubject<any>({});
+  selectedUser$ = this.userLogged$.asObservable();
+
   constructor(private http:HttpClient) { }
+
+  setUser(user: User) {
+    this.userLogged$.next(user);
+  }
 
 login(user: User): Observable<any> {
   console.log("login");

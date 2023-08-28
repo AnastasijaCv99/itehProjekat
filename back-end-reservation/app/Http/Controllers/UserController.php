@@ -43,7 +43,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             //'password' => $request->password,
-            'is_admin' => $request->isAdmin,
+            'is_admin' => $request->is_admin,
             'cafe_id' => $request->cafeId,
         ]);
 

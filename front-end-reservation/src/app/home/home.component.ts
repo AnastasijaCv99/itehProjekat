@@ -4,6 +4,7 @@ import { MenuItemService } from '../services/menu-item.service';
 import { AuthService } from '../services/auth.service';
 import { Menu } from '../interfaces/menu';
 import { Cafe } from '../interfaces/cafe';
+import { User } from '../interfaces/user';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,12 @@ export class HomeComponent {
   constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService) {   }
   
   menus: Menu[];
-
+  user: User;
   
 
   ngOnInit(): void{
     this.getMenuForCafe();
-   
+    this.userDefinition();
   }
 
   getMenuForCafe(){
@@ -33,4 +34,13 @@ export class HomeComponent {
     }) 
   }
 
+
+  userDefinition(){
+    this.auth.selectedUser$.subscribe((value) => {
+      this.user = value;
+      console.log('proba da li radi ovo',this.user);
+      if(this.user.is_admin==true) console.log('admin');
+    });
+    
+  }
 }

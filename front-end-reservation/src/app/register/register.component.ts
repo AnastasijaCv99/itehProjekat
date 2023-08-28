@@ -59,7 +59,7 @@ export class RegisterComponent {
     lastName: 'string',
     email: 'string',
     password: 'string',
-    isAdmin: true,
+    is_admin: true,
   };
 
   cafe: Cafe = {
@@ -152,7 +152,7 @@ export class RegisterComponent {
       console.log("cafe data id " + this.cafeData.id);
       this.user.cafeId = this.cafeData.id;
       
-      this.user.isAdmin = true;
+      this.user.is_admin = true;
       /*console.log("fja onSubmit2 cafe posle cuvanja u bazi a pre cuvanja usera");
       console.log(this.cafeData);
       console.log("cafe data id " + this.cafeData.id);

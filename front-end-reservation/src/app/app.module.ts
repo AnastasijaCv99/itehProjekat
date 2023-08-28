@@ -14,6 +14,7 @@ import { MenuMainComponent } from './menu-main/menu-main.component';
 import { UserInterceptor } from './user.interceptor';
 import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
     MenuMainComponent,
     HomeComponent,
     MenuItemComponent,
+    CartComponent,
     
   ],
   imports: [

@@ -22,6 +22,8 @@ export class LoginComponent {
   loginForm: FormGroup;
   user: User;
   cafeID: number;
+
+
   constructor(private fb:FormBuilder, private auth:AuthService, private router:Router){}
 
   ngOnInit(): void{
@@ -44,14 +46,9 @@ export class LoginComponent {
     });
     //neka provera da res nije null prvo pa onda redirect
     if (localStorage.getItem('res')) {
-      this.router.navigate(['home', this.cafeID]); //ili mozda home/this.cafeID
-
-      //console.log('1.if ls get item ispis:', this.user);
-      //this.cafeID = this.user.cafeId;
-      //console.log('2.user cafe id: ' , this.user.cafeId);
-      //console.log('3.cafe id: ' , this.cafeID);
-
-     } else this.router.navigate(['login']); //plus prikazi na ekranu da ima greska ono error nesto ili da su losi kredencijali
+      this.auth.setUser(this.user);
+      this.router.navigate(['waiter/home', this.cafeID]);
+    } else this.router.navigate(['login']); //plus prikazi na ekranu da ima greska ono error nesto ili da su losi kredencijali
   
   }
 
