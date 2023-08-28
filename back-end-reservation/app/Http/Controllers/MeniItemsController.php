@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\MenuItems;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MeniItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    public function index($id)
     {
-        //
+        $menuItems = DB::table('menu_items')->where('menu_id', '=', $id)->get();  // proba
+
+        return $menuItems;
     }
 
     /**

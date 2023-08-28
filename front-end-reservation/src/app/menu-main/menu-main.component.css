@@ -1,11 +1,7 @@
 .card{
     margin: auto;
-    margin-left: 20%;
-    margin-right: 20%;
     margin-top: 2%;
     text-align: center;
+    width: 500%;
 }
 
-.card-header{
-    background-color: lightblue;
-}

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItemService } from '../services/menu-item.service';
 import { AuthService } from '../services/auth.service';
-import { MenuItem } from '../interfaces/menu-item';
+import { Menu } from '../interfaces/menu';
 import { Cafe } from '../interfaces/cafe';
 
 @Component({
@@ -14,8 +14,8 @@ export class HomeComponent {
 
   constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService) {   }
   
-  menuItems: MenuItem[];
-  menuData: any;
+  menus: Menu[];
+
   
 
   ngOnInit(): void{
@@ -24,13 +24,12 @@ export class HomeComponent {
   }
 
   getMenuForCafe(){
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const idc = Number(this.route.snapshot.paramMap.get('id'));
     
-    this.menuService.getMenus(id).subscribe((res) => {
-      //this.menuData = res;
-      console.log('menu data', this.menuData);
-      this.menuItems = res.data;
-      console.log('menu items', this.menuItems);
+    this.menuService.getMenus(idc).subscribe((res) => {
+
+      this.menus = res.data;
+      console.log('menu items', this.menus);
     }) 
   }
 

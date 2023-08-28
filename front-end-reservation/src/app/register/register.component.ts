@@ -12,7 +12,7 @@ import { Cafe } from '../interfaces/cafe';
 import { CafeService } from '../services/cafe.service';
 import { AuthService } from '../services/auth.service';
 import {MatIconModule} from '@angular/material/icon';
-import { MenuItem } from '../interfaces/menu-item';
+import { Menu } from '../interfaces/menu';
 import { MenuItemService } from '../services/menu-item.service';
 import { Router } from '@angular/router';
 
@@ -72,9 +72,8 @@ export class RegisterComponent {
     type: 'caffe'
   };
 
-  menuItem: MenuItem = {
-    idItem: 0,
-    menuId: 0,
+  menuItem: Menu = {
+    id: 0,
     cafeId: 0,
     menu_name: 'string',
     drink_food_title: 'string',

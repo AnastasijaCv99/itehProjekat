@@ -1,9 +1,10 @@
 import { Component, Input, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItemService } from '../services/menu-item.service';
 import { AuthService } from '../services/auth.service';
-import { MenuItem } from '../interfaces/menu-item';
+import { Menu } from '../interfaces/menu';
 import { Cafe } from '../interfaces/cafe';
+import { MenuItems } from '../interfaces/menu-items';
 
 
 @Component({
@@ -13,29 +14,32 @@ import { Cafe } from '../interfaces/cafe';
 })
 export class MenuMainComponent {
   
-  constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService) {   }
-  
-  //menuName: string = '';
-  
+  constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService, private router:Router) {   }
 
-  @Input() menuItems: MenuItem;
-    //menuData: any;
-    
+  @Input() menus: Menu;
+        
+  menuItem: MenuItems[];
+
     ngOnInit(): void{
   
-      //this.getMenuForCafe();
-      this.menuItems = this.menuItems;
+      this.menus = this.menus;
+      //this.getMenuItemsForMenu();
     }
   
-    /*getMenuForCafe(){
-      const id = Number(this.route.snapshot.paramMap.get('id'));
+    onClick(){
+      //this.router.navigate(['home/menu', this.menus.id]);
+      //this.router.createUrlTree(['home', this.menus.cafeId, 'menu', this.menus.id]);
+      //this.router.navigate(['menu', this.menus.id], {relativeTo:this.route});
+      this.getMenuItemsForMenu(this.menus.id);
+    }
+
+    getMenuItemsForMenu(id: number){
+      //const idi = Number(this.route.snapshot.paramMap.get('id'));
       
-      //this.heroService.getHero(id)
-      //  .subscribe(hero => this.hero = hero);
-      
-      this.menuService.getMenus(id).subscribe((res) => {
-        this.menuData = res;
-        console.log(this.menuData);
+      this.menuService.getMenuItems(id).subscribe((res) => {
+        this.menuItem = res;
+        console.log(this.menuItem);
       }) 
-    }*/
+    }
+
 }

@@ -1,7 +1,6 @@
-export interface MenuItem {
+export interface Menu {
     //naziv menija, IDStavke, MeniID, nazivPicaHrane, opisSastojci, cena
-    idItem: number,
-    menuId: number,
+    id: number,
     cafeId: number,
     menu_name: string,
     drink_food_title: string,

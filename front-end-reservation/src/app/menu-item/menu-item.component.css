@@ -1,0 +1,14 @@
+.card{
+    margin: auto;
+    margin-top: 2%;
+    text-align: center;
+} 
+
+.card-header{
+    background-color:  cadetblue;
+}
+
+
+.card-footer {
+    background-color: lightblue;
+}

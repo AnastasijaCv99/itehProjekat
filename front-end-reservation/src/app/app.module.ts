@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { MenuMainComponent } from './menu-main/menu-main.component';
 import { UserInterceptor } from './user.interceptor';
 import { HomeComponent } from './home/home.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     MenuMainComponent,
     HomeComponent,
+    MenuItemComponent,
     
   ],
   imports: [

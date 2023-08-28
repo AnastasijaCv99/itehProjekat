@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CafeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MeniItemsController;
+
 use App\Http\Resources\CafeResource;
 
 
@@ -39,7 +41,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //Route::resource('cafe', CafeResource::class)->only(['update', 'store', 'destroy']);
 	Route::get('/profile', [UserController::Class, 'index']);
     Route::post('/logout', [UserController::class, 'logout']);
-	Route::get('/menu/{id}', [MenuController:: class, 'cafeMenu']); 
+	Route::get('/cafe/{id}', [MenuController:: class, 'cafeMenu']);  //reutrns menu names for a cafe
+	Route::get('/menuItems/{id}', [MeniItemsController:: class, 'index']); //returns menu items for a menu in a cafe
 });
 /*
     -/: 

@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { MenuMainComponent } from './menu-main/menu-main.component';
 import { authGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 
 
 
@@ -21,7 +22,16 @@ const routes: Routes = [
     path: 'home/:id',
     component: HomeComponent,
     canActivate: [authGuard],
+    /*children: [{
+      path: 'menu/:id',
+      component: MenuItemComponent
+    }]*/
   },
+  {
+    path: 'home/:id/menu/:id',
+    component: MenuItemComponent,
+    canActivate: [authGuard],
+  }
 ];
 
 @NgModule({

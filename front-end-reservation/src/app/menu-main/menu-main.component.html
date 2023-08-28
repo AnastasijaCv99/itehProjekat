@@ -1,7 +1,18 @@
-<div class="card">
-    <h5 class="card-header">Menu name</h5>
-    <div class="card-body">
-      <h2 class="card-title"> {{ menuItems.menu_name }} </h2>
-      <a href="#" class="btn btn-outline-info btn-sm" >MORE</a>
-    </div>
-  </div>
+<div class="card" style="width: 40rem;">
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> 
+        {{ menus.menu_name }}
+      </mat-panel-title>
+      <mat-panel-description (click)="onClick()">
+        Check more
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-menu-item
+      *ngFor="let m of menuItem"  
+      [menuItem]="m"
+    ></app-menu-item>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>

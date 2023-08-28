@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MenuItem } from '../interfaces/menu-item';
+import { Menu } from '../interfaces/menu';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,12 +12,16 @@ export class MenuItemService {
   constructor(private http: HttpClient) { }
 
 
-  registerMenu(menu: MenuItem): Observable<any> {
+  registerMenu(menu: Menu): Observable<any> {
     console.log("menu registration");
     return this.http.post(`${this.url}register/menu`, menu);
   }
 
   getMenus(id: number): Observable<any> {
-    return this.http.get(`${this.url}menu/${id}`);  //id je u ovom slucaju id kafica
+    return this.http.get(`${this.url}cafe/${id}`);  //this id is id of a cafe
+  }
+
+  getMenuItems(id: number): Observable<any> {
+    return this.http.get(`${this.url}menuItems/${id}`);  //this id is id of a menu
   }
 }

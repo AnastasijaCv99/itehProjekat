@@ -59,7 +59,7 @@ class MenuController extends Controller
 
  
     public function cafeMenu($id) {
-        $names = DB::select('SELECT * FROM `menus` m JOIN cafes c ON (m.cafe_id = c.id) WHERE cafe_id = ?', [$id]);
+        $names = DB::select('SELECT m.id, m.menu_name, c.title FROM `menus` m JOIN cafes c ON (m.cafe_id = c.id) WHERE cafe_id = ?', [$id]);
         return response()->json(['Menu names.', 'data' => $names]);
     }
 
