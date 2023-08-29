@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { Menu } from '../interfaces/menu';
 import { Cafe } from '../interfaces/cafe';
 import { User } from '../interfaces/user';
+import { CafeService } from '../services/cafe.service';
 
 @Component({
   selector: 'app-home',
@@ -13,19 +14,22 @@ import { User } from '../interfaces/user';
 })
 export class HomeComponent {
 
-  constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService) {   }
+  constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService, private cafeSerice: CafeService) {   }
   
   menus: Menu[];
   user: User;
-  
+  cafe: Cafe;
 
   ngOnInit(): void{
     this.getMenuForCafe();
+    this.cafeDefinition();
     this.userDefinition();
   }
 
   getMenuForCafe(){
     const idc = Number(this.route.snapshot.paramMap.get('id'));
+    //this.cafe.id = idc;
+    //this.cafeS.setCafe(this.cafe);
     if (localStorage.getItem('res')) {
         this.menuService.getMenusForWaiter(idc).subscribe((res) => {
         this.menus = res.data;
@@ -45,5 +49,15 @@ export class HomeComponent {
       console.log('proba da li radi ovo',this.user);
       if(this.user.is_admin==true) console.log('admin');
     });
+  }
+
+
+  cafeDefinition(){
+    const idc = Number(this.route.snapshot.paramMap.get('id'));
+    this.cafeSerice.getCafeInfo(idc).subscribe((res) => {
+      this.cafe = res;
+      console.log('cafe data from home comp', this.cafe);
+      this.cafeSerice.setCafe(this.cafe);
+    })
   }
 }

@@ -23,9 +23,9 @@ const routes: Routes = [
     path: 'home/waiter/:id',
     component: HomeComponent,
     canActivate: [authGuard],
-    /*children: [{
-      path: 'menu/:id',
-      component: MenuItemComponent
+  /*  children: [{
+      path: 'cart',
+      component: CartComponent
     }]*/
   },
   {
@@ -40,7 +40,7 @@ const routes: Routes = [
   },
   {
     //for regular user
-    path: 'home/:id/cart',
+    path: 'cart',
     component: CartComponent,
   }
 ];

@@ -5,7 +5,9 @@
   <div class="card-body">
     <h2 class="card-title">{{ menuItem.drink_food_title }}</h2>
     <h5 class="card-text">{{ menuItem.ingredients }}</h5>
-    <a href="#" class="btn btn-primary">Order</a>
+    <a  class="btn btn-primary" (click)="onAddToCart()">Order</a>
+    <a (click)="edit()" class="btn btn-primary">Edit</a>
+    <a (click)="delete()" class="btn btn-primary">Delete</a>
   </div>
   <div class="card-footer text-muted">
     Price: {{ menuItem.price }}

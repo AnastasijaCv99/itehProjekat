@@ -6,6 +6,7 @@ use App\Models\Cafe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\CafeResource;
+use Illuminate\Support\Facades\DB;
 
 class CafeController extends Controller
 {
@@ -41,9 +42,11 @@ class CafeController extends Controller
 
 
 
-    public function index()
+    public function index($id)
     {
-        //
+        $cafe = DB::table('cafes')->where('id', '=', $id)->get();  // proba
+
+        return $cafe;
     }
 
     /**

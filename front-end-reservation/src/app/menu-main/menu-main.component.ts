@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItemService } from '../services/menu-item.service';
 import { AuthService } from '../services/auth.service';
@@ -17,7 +17,9 @@ export class MenuMainComponent {
   constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService, private router:Router) {   }
 
   @Input() menus: Menu;
-        
+  @Output() addToCart = new EventEmitter<number>();      
+  cartItems: number = 0;
+
   menuItem: MenuItems[];
 
     ngOnInit(): void{
@@ -44,8 +46,13 @@ export class MenuMainComponent {
         console.log(this.menuItem);
         }) 
       }
+    }
 
-      
+    onAddToCart() {
+      this.cartItems++;
+      console.log(this.cartItems);
+      this.addToCart.emit();
+
     }
 
 }

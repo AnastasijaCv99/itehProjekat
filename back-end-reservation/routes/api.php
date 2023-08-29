@@ -36,6 +36,8 @@ Route::get('/menu', [MenuController:: class, 'getMenu']);
 Route::get('/home/{id}', [MenuController:: class, 'cafeMenu']);  //reutrns menu names for a regular user
 Route::get('/home/menuItems/{id}', [MeniItemsController:: class, 'index']); //returns menu items for a menu in a cafe for regular user
 
+Route::get('/cafe/info/{id}', [CafeController::class, 'index']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     /*Route::get('/profile', function (Request $request) {
         return auth()->user();
@@ -46,6 +48,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [UserController::class, 'logout']);
 	Route::get('/cafe/{id}', [MenuController:: class, 'cafeMenu']);  //reutrns menu names for a cafe for waiter registered
 	Route::get('/menuItems/{id}', [MeniItemsController:: class, 'index']); //returns menu items for a menu in a cafe for a waiter
+	
 });
 /*
     -/: 

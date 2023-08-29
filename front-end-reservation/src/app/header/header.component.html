@@ -1,22 +1,28 @@
-<div *ngIf="condition">
+<div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="waiter/home">Home </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="" >NEJOSOrder(reservations) <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="" (click)="logout()">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="" >NEJOSSetting</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <a class="navbar-brand" *ngIf="ifPresent" >{{cafe[0].title}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="ifPresent" routerLink="" (click)="onHome()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="conditionLoggedUser" routerLink="" (click)="logout()">Logout</a>
+      </li>
+      <li class="nav-item">
+       <!--<a class="nav-link" routerLink="">Reservations</a> --> 
+       <a class="navbar-brand btn" *ngIf="ifPresent" routerLink="cart"> <mat-icon class="element">shopping_cart</mat-icon> {{cartItems}} </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="conditionLoggedAdmin" routerLink="">Waiters</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="conditionLoggedAdmin" routerLink="">Menus settings</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 </div>
-  <!-- *ngIf="condition"-->

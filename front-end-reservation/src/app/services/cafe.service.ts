@@ -22,4 +22,8 @@ export class CafeService {
     console.log("register cafe");
     return this.http.post(`${this.url}register/cafe`, cafe);
   }
+
+  getCafeInfo(id: number): Observable<any>{
+    return this.http.get(`${this.url}cafe/info/${id}`);
+  }
 }

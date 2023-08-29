@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Menu } from '../interfaces/menu';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class MenuItemService {
 
   url: string = "http://localhost:8000/api/";
+
   constructor(private http: HttpClient) { }
 
 
@@ -30,6 +31,10 @@ export class MenuItemService {
   }
 
   getMenuItemsForUser(id: number): Observable<any> {
+    return this.http.get(`${this.url}home/menuItems/${id}`);  //this id is id of a menu
+  }
+
+  deleteMenuItem(id: number): Observable<any> {
     return this.http.get(`${this.url}home/menuItems/${id}`);  //this id is id of a menu
   }
 
