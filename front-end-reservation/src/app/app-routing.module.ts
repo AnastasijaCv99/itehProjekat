@@ -7,10 +7,15 @@ import { authGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
+import { TestComponent } from './test/test.component';
 
 
 
 const routes: Routes = [
+  {
+    path: 'test',
+    component: TestComponent
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -20,22 +25,12 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'home/waiter/:id',
-    component: HomeComponent,
-    pathMatch: 'full',
-    canActivate: [authGuard],
-  /*  children: [{
-      path: 'cart',
-      component: CartComponent
-    }]*/
-  },
-  {
-    path: 'home/waiter/:id/menu/:id',
-    component: MenuItemComponent,
+    path: 'home/waiter/settings/:id',
+    component: TestComponent,
     canActivate: [authGuard],
   },
   {
-    //for regular user
+    //for regular user and logged in user
     path: 'home/:id',
     component: HomeComponent
   },

@@ -67,4 +67,8 @@ export class HeaderComponent {
       this.router.navigate(['home', this.cafe[0].id]);
     });
   }
+
+  goToSetings(){
+    this.router.navigate(['home/waiter/settings', this.cafe[0].id]);
+  }
 }

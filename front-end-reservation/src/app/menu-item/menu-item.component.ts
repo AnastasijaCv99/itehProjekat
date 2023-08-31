@@ -16,22 +16,36 @@ export class MenuItemComponent {
   @Input() menuItem: MenuItems;
   id: number;
   @Output() addToCart = new EventEmitter<any>();
-  condition: boolean = false;
+  conditionNotLogged: boolean = true;
+  conditionLoggedIn: boolean = false;
   url: string = this.router.url;
-
+  quantity: any;
 
   ngOnInit(): void{
     this.menuItem = this.menuItem;
     console.log(this.router.url);
-    if (!this.url.includes('waiter')) this.condition = true;
-
+    if (localStorage.getItem('res') != null) {
+      console.log('lcoal storafge', localStorage.getItem('res'));
+      this.conditionNotLogged = false;
+      this.conditionLoggedIn = true;
+      }
     } 
   
 
   onAddToCart() {
-    console.log(this.menuItem);
-    this.menuItem.quantity = 1;
-    this.menuService.addToArray(this.menuItem);
+    //if ((<HTMLInputElement>document.getElementById("quantity")).value == 0)
+    //if((<HTMLInputElement>document.getElementById("quantity")).value != this.quantity) {
+      console.log('kolicina je', (<HTMLInputElement>document.getElementById("quantity")).value);
+
+      this.menuItem.quantity = (<HTMLInputElement>document.getElementById("quantity")).value as unknown as number;
+
+      //this.menuItem.quantity = this.quantity;
+      //this.menuItem.quantity = 1;
+      console.log(this.menuItem);
+      this.menuService.addToArray(this.menuItem);
+      
+    //}
+    
   }
 
   edit() {

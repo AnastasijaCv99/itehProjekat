@@ -56,7 +56,7 @@ class UserController extends Controller
             $user = User::where(['email' => $req->email])->first();
             if (!$user || !Hash::check($req->password, $user->password)) {        
                 return response()
-                ->json(['message' => 'Unauthorized'], 401);
+                ->json(['message' => 'Unauthorized', 'data'=> null], 401);
             } else {
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return response()

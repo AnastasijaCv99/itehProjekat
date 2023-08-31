@@ -35,7 +35,7 @@ export class MenuMainComponent {
 
     getMenuItemsForMenu(id: number){
       //const idi = Number(this.route.snapshot.paramMap.get('id'));
-      if (localStorage.getItem('res')) {
+      if (localStorage.getItem('res') != null) {
         this.menuService.getMenuItemsForWaiter(id).subscribe((res) => {
         this.menuItem = res;
         console.log(this.menuItem);

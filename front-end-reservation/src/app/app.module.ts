@@ -15,6 +15,7 @@ import { UserInterceptor } from './user.interceptor';
 import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CartComponent } from './cart/cart.component';
     HomeComponent,
     MenuItemComponent,
     CartComponent,
+    TestComponent,
     
   ],
   imports: [

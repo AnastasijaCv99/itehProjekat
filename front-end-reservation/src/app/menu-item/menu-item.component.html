@@ -5,9 +5,22 @@
   <div class="card-body">
     <h2 class="card-title">{{ menuItem.drink_food_title }}</h2>
     <h5 class="card-text">{{ menuItem.ingredients }}</h5>
-    <a  class="btn btn-primary" *ngIf="condition"  (click)="onAddToCart()">Order</a>
-    <a (click)="edit()" class="btn btn-primary">Edit</a>
-    <a (click)="delete()" class="btn btn-primary">Delete</a>
+      <div *ngIf="conditionNotLogged">
+      <div class="example-container" >
+        <mat-form-field>
+          <mat-label>Enter the quantity</mat-label>
+          <!-- value="{{ menuItem.quantity }}" -->
+          <input matInput required type="quantity" name="quantity" id="quantity" value="1" min="1">
+        </mat-form-field>
+      </div>
+      <div class="example-label"></div>
+        <div class="example-button-row">
+        <a  class="btn btn-primary"  (click)="onAddToCart()">Order</a>
+      </div>
+    </div>
+    
+    <a (click)="edit()" class="btn btn-primary" *ngIf="conditionLoggedIn">Edit</a>
+    <a (click)="delete()" class="btn btn-primary" *ngIf="conditionLoggedIn">Delete</a>
   </div>
   <div class="card-footer text-muted">
     Price: {{ menuItem.price }}

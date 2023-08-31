@@ -7,7 +7,7 @@ export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: R
    boolean => {
 //| UrlTree 
 
-  if (localStorage.getItem('res')) {
+  if (localStorage.getItem('res') != null) {
     return true;} else return false;
 }
 

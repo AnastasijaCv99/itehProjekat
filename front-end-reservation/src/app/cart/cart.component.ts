@@ -58,7 +58,7 @@ export class CartComponent {
     this.reservationToSend.table_id = this.tableNumberInput;
 
     this.menuItem.forEach(element => {
-      element.price = element.price*element.quantity
+      element.price = element.price*element.quantity;
       this.price =this.price + element.price;
     }); 
     this.reservationToSend.price = this.price;
@@ -67,12 +67,13 @@ export class CartComponent {
 
     this.menuService.makeAnOrder(this.reservationToSend).subscribe((res) =>
     {
-      console.log(res)
+      console.log(res);
+      this.menuService.emptyArray();
     });
 
     this.display = "none";
-    this.menuItem = [];
-    this.menuService.emptyArray();
+    //this.menuItem = [];
+    //this.menuService.emptyArray();
     //i na kraju isprazni niz ovaj sa itemima, kad posaljes porudzbinu i sve
   }
 

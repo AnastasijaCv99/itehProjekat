@@ -46,7 +46,7 @@ export class HomeComponent {
   userDefinition(){
     this.auth.selectedUser$.subscribe((value) => {
       this.user = value;
-      console.log('proba da li radi ovo',this.user);
+      console.log('proba useer: ',this.user);
       if(this.user.is_admin==true) console.log('admin');
     });
   }
@@ -56,7 +56,7 @@ export class HomeComponent {
     const idc = Number(this.route.snapshot.paramMap.get('id'));
     this.cafeSerice.getCafeInfo(idc).subscribe((res) => {
       this.cafe = res;
-      console.log('cafe data from home comp', this.cafe);
+      console.log('cafe data from home component', this.cafe);
       this.cafeSerice.setCafe(this.cafe);
     })
   }
