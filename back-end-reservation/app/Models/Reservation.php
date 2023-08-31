@@ -10,9 +10,10 @@ class Reservation extends Model
     use HasFactory;
     public $table = "reservations";
 
-    protected $fillable = [
+    /*protected $fillable = [
         'price',
-    ];
+    ];*/
+    protected $guarded = [];
 
     public function tableDesk()
 	{

@@ -1,1 +1,34 @@
 <p>cart works!</p>
+<app-menu-item
+      *ngFor="let m of menuItem"  
+      [menuItem]="m"
+></app-menu-item>
+
+
+<button type="button" class="btn btn-info btn-lg" (click)="openModal()">Order</button>
+
+<div div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title">Final order</h1>
+          </div>
+          <div class="modal-body">
+              <form role="form">
+                  <div class="form-group">
+                      <label class="control-label">Table number: </label>
+                      <div>
+                          <input type="number" class="form-control input-lg" name="tableNumber" id="tableNumber" value="">
+                      </div>
+                  </div>
+          <!-- moze neko ono placanje pitanje: kartica ili kes -->
+                  <div class="form-group">
+                      <div>
+                          <button class="btn btn-success" (click)="onSubmit()" type="button">Order</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

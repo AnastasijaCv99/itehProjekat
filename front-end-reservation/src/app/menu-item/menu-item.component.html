@@ -5,7 +5,7 @@
   <div class="card-body">
     <h2 class="card-title">{{ menuItem.drink_food_title }}</h2>
     <h5 class="card-text">{{ menuItem.ingredients }}</h5>
-    <a  class="btn btn-primary" (click)="onAddToCart()">Order</a>
+    <a  class="btn btn-primary" *ngIf="condition"  (click)="onAddToCart()">Order</a>
     <a (click)="edit()" class="btn btn-primary">Edit</a>
     <a (click)="delete()" class="btn btn-primary">Delete</a>
   </div>

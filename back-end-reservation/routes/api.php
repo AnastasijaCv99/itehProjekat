@@ -6,6 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CafeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MeniItemsController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReservationItemsController;
+
 
 use App\Http\Resources\CafeResource;
 
@@ -35,6 +38,7 @@ Route::get('/menu', [MenuController:: class, 'getMenu']);
 
 Route::get('/home/{id}', [MenuController:: class, 'cafeMenu']);  //reutrns menu names for a regular user
 Route::get('/home/menuItems/{id}', [MeniItemsController:: class, 'index']); //returns menu items for a menu in a cafe for regular user
+Route::post('/home/reservation', [ReservationController::class, 'makeAnOrder']);
 
 Route::get('/cafe/info/{id}', [CafeController::class, 'index']);
 

@@ -3,5 +3,6 @@ export interface MenuItems {
     menu_id: number,
     drink_food_title: string,
     ingredients: string,
-    price: number
+    price: number,
+    quantity: number,
 }

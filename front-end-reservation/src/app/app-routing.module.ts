@@ -22,6 +22,7 @@ const routes: Routes = [
   {
     path: 'home/waiter/:id',
     component: HomeComponent,
+    pathMatch: 'full',
     canActivate: [authGuard],
   /*  children: [{
       path: 'cart',
