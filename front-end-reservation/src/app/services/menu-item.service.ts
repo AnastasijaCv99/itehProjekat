@@ -32,15 +32,15 @@ export class MenuItemService {
   }
 
   getMenuItemsForWaiter(id: number): Observable<any> {
-    return this.http.get(`${this.url}menuItems/${id}`);  //this id is id of a menu
+    return this.http.get(`${this.url}cafe/menuItems/${id}`);  //this id is id of a menu for a waiter
   }
 
   getMenuItemsForUser(id: number): Observable<any> {
-    return this.http.get(`${this.url}home/menuItems/${id}`);  //this id is id of a menu
+    return this.http.get(`${this.url}home/menuItems/${id}`);  //this id is id of a menu for a user
   }
 
   deleteMenuItem(id: number): Observable<any> {
-    return this.http.get(`${this.url}home/menuItems/${id}`);  //this id is id of a menu
+    return this.http.delete(`${this.url}cafe/settings/menus/${id}`);  //this id is id of a menu
   }
 
   returnArray(): MenuItems[] {

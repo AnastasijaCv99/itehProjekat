@@ -62,8 +62,10 @@ class MeniItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MenuItems $menuItems)
+    public function destroy($id)
     {
-        //
+        $item = MenuItems::find($id);
+        $item->delete();
+        return response(['Message' => 'This item has been deleted', 'data' => $item], 200);
     }
 }

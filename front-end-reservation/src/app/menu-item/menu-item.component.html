@@ -20,7 +20,7 @@
     </div>
     
     <a (click)="edit()" class="btn btn-primary" *ngIf="conditionLoggedIn">Edit</a>
-    <a (click)="delete()" class="btn btn-primary" *ngIf="conditionLoggedIn">Delete</a>
+    <a (click)="onDelete()" class="btn btn-primary" *ngIf="conditionLoggedIn">Delete</a>
   </div>
   <div class="card-footer text-muted">
     Price: {{ menuItem.price }}

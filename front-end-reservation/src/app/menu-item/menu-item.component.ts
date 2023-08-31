@@ -52,7 +52,7 @@ export class MenuItemComponent {
 
   }
 
-  delete() {
+  onDelete() {
     this.id = this.menuItem.id;
     this.menuService.deleteMenuItem(this.id).subscribe((res) =>
     {
