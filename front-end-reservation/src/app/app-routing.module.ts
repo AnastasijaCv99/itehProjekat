@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
 import { TestComponent } from './test/test.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -26,7 +27,12 @@ const routes: Routes = [
   },
   {
     path: 'home/waiter/settings/:id',
-    component: TestComponent,
+    component: TestComponent, //promeniti ovo
+    canActivate: [authGuard],
+  },
+  {
+    path: 'home/waiter/settings/menus/:id',
+    component: SettingsComponent,
     canActivate: [authGuard],
   },
   {

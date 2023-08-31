@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MenuItems;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class MeniItemsController extends Controller
 {
@@ -46,9 +47,36 @@ class MeniItemsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MenuItems $menuItems)
+    public function edit(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'drink_food_title' => 'required|string|max:255',
+            'ingredients' => 'required|string',
+            'price' => 'required',
+        ]);
+
+        if ($validator->fails())
+            return response()->json($validator->errors());
+
+        DB::table('menu_items')
+            ->where('id', $request->id)
+            ->update([
+                
+                'drink_food_title' => $request->drink_food_title,
+                'ingredients' => $request->ingredients,
+                'price' => $request->price
+                
+            ]);
+
+            /*MenuItems::find($request->$id)->update([
+                'drink_food_title' => $request->drink_food_title,
+                'ingredients' => $request->ingredients,
+                'price' => $request->price,
+            ]);*/
+
+        return response()->json(['Post is updated successfully.']);
+
+        
     }
 
     /**

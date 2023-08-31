@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
 import { TestComponent } from './test/test.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TestComponent } from './test/test.component';
     MenuItemComponent,
     CartComponent,
     TestComponent,
+    SettingsComponent,
     
   ],
   imports: [

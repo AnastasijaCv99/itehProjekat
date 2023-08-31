@@ -14,9 +14,15 @@ export class MenuItemService {
 
 
   items: Array<MenuItems> = [];
+  
+  private itemForEdit$ = new BehaviorSubject<any>({});
+  edit$ = this.itemForEdit$.asObservable();
 
   constructor(private http: HttpClient) { }
 
+  setItem(item: MenuItems) {
+    this.itemForEdit$.next(item);
+  }
 
   registerMenu(menu: Menu): Observable<any> {
     console.log("menu registration");
@@ -57,5 +63,9 @@ export class MenuItemService {
 
   makeAnOrder(reservation: SendReservation): Observable<any> {
     return this.http.post(`${this.url}home/reservation`, reservation);
+  }
+
+  editItem(item: MenuItems): Observable<any> {
+    return this.http.put(`${this.url}cafe/settings/menuItems`, item);
   }
 }

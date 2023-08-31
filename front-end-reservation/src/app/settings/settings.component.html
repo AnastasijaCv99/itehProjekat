@@ -1,0 +1,22 @@
+<p>settings works!</p>
+
+<form class="example-form" >
+    <mat-form-field class="example-full-width">
+      <mat-label>Title</mat-label>
+      <input matInput required id="title" value="{{ itemForEdit.drink_food_title }}">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Description/ingredients</mat-label>
+      <textarea matInput required id="ingredients" value="{{ itemForEdit.ingredients }}"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Price</mat-label>
+        <input matInput required id="price" value="{{ itemForEdit.price }}">
+      </mat-form-field>
+
+      <div class="example-button-row">
+        <button  type='button' mat-raised-button color="primary" (click)="edit()">Save</button>
+      </div>
+</form>

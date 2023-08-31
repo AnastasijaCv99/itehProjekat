@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 	Route::get('/cafe/{id}', [MenuController:: class, 'cafeMenu']);  //reutrns menu names for a cafe for waiter registered
 	Route::get('/cafe/menuItems/{id}', [MeniItemsController:: class, 'index']); //returns menu items for a menu in a cafe for a waiter
 	Route::delete('/cafe/settings/menus/{id}', [MeniItemsController::class, 'destroy']);
+	Route::put('/cafe/settings/menuItems', [MeniItemsController::class, 'edit']);
 });
 
 

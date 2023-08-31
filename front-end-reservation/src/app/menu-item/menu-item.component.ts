@@ -18,6 +18,7 @@ export class MenuItemComponent {
   @Output() addToCart = new EventEmitter<any>();
   conditionNotLogged: boolean = true;
   conditionLoggedIn: boolean = false;
+
   url: string = this.router.url;
   quantity: any;
 
@@ -42,14 +43,17 @@ export class MenuItemComponent {
       //this.menuItem.quantity = this.quantity;
       //this.menuItem.quantity = 1;
       console.log(this.menuItem);
-      this.menuService.addToArray(this.menuItem);
-      
-    //}
-    
+      this.menuService.addToArray(this.menuItem);    
   }
 
-  edit() {
+ 
 
+  onEdit(){
+    
+    //sta raditi sad
+    //nek se redirectuje na neku drugu stranu, sa svim podacima ovim
+    this.menuService.setItem(this.menuItem);
+    this.router.navigate(['home/waiter/settings/menus/', this.menuItem.id]);
   }
 
   onDelete() {
