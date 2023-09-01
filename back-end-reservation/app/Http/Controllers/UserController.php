@@ -24,27 +24,35 @@ class UserController extends Controller
         return $users;
     }
 
+    public function showAll($id) {
+        $users = DB::table('users')->where('cafe_id', $id)->get();
+
+        return response()->json(['data' => $users]);
+    }
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|string|max:255|email|unique:users',
-            'password' => 'required|string|min:8'
+            //'password' => 'required|string|min:8'
         ]);
 
 
         if ($validator->fails())
             return response()->json($validator->errors());
 
+        
+
         $user = User::create([
-            'first_name' => $request->firstName,
-            'last_name' => $request->lastName,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             //'password' => $request->password,
             'is_admin' => $request->is_admin,
-            'cafe_id' => $request->cafeId,
+            'cafe_id' => $request->cafe_id,
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -100,9 +108,44 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(Request $request)
     {
-        //
+     /*   $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string',
+            'email' => 'required',
+        ]);
+
+        if ($validator->fails())
+            return response()->json($validator->errors());
+*/
+/*
+        $userNew = DB::table('users')
+            ->where('id', $request->id)
+            ->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email
+            ])->get();
+*/
+            $pass = $request['element']['password'];
+            if ($pass === null) {
+                $pass = Hash::make("password");
+            }
+            DB::table('users')
+            ->updateOrInsert(
+                ['id' => $request['element']['id']],
+                [
+                'first_name' => $request['element']['first_name'],
+                'last_name' => $request['element']['last_name'],
+                'email' => $request['element']['email'],
+                'cafe_id' => $request['element']['cafe_id'],
+                'password' => $pass,
+                'is_admin' => 0,
+                ]);
+
+
+        return response()->json(['User is updated successfully.']);
     }
 
     /**

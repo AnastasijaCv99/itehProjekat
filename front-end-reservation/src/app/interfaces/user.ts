@@ -1,8 +1,8 @@
 export interface User {
     id: number,
-    cafeId: number,
-    firstName: string,
-    lastName: string,
+    cafe_id: number,
+    first_name: string,
+    last_name: string,
     email: string,
     password: string,
     is_admin: boolean,

@@ -54,9 +54,9 @@ export class RegisterComponent {
   selectedValue: string;
   user: User = {
     id: 0,
-    cafeId: 0,
-    firstName: 'string',
-    lastName: 'string',
+    cafe_id: 0,
+    first_name: 'string',
+    last_name: 'string',
     email: 'string',
     password: 'string',
     is_admin: true,
@@ -144,13 +144,13 @@ export class RegisterComponent {
     console.log(this.secondFormGroup.value);
     
     if(this.secondFormGroup.valid) {
-      this.user.firstName = this.secondFormGroup.value.nameCtrl as string;
-      this.user.lastName = this.secondFormGroup.value.lastNameCtrl as string;
+      this.user.first_name = this.secondFormGroup.value.nameCtrl as string;
+      this.user.last_name = this.secondFormGroup.value.lastNameCtrl as string;
       this.user.email = this.secondFormGroup.value.emailCtrl as string;
       this.user.password = this.secondFormGroup.value.passwordCtrl as string;
   
       console.log("cafe data id " + this.cafeData.id);
-      this.user.cafeId = this.cafeData.id;
+      this.user.cafe_id = this.cafeData.id;
       
       this.user.is_admin = true;
       /*console.log("fja onSubmit2 cafe posle cuvanja u bazi a pre cuvanja usera");

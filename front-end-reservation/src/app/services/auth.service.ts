@@ -38,4 +38,14 @@ logout(): Observable<any> {
   return this.http.post(`${this.url}logout`, null);
 }
 
+getAllUsersForCafe(id: number): Observable<any> {
+  return this.http.get(`${this.url}cafe/${id}/users`);
+}
+
+editUser(user: User): Observable<any> {
+  return this.http.put(`${this.url}cafe/settings/users`, user);
+}
+
+
+
 }

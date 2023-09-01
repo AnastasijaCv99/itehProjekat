@@ -16,7 +16,7 @@
        <a class="navbar-brand btn" *ngIf="ifPresent" routerLink="cart"> <mat-icon class="element">shopping_cart</mat-icon> {{cartItems}} </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" *ngIf="conditionLoggedAdmin" routerLink="">Waiters</a>
+        <a class="nav-link" *ngIf="conditionLoggedAdmin" routerLink="" (click)="goToWaiters()" >Waiters</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" *ngIf="conditionLoggedAdmin" routerLink="" (click)="goToSetings()">Menus settings</a>

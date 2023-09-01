@@ -71,4 +71,8 @@ export class HeaderComponent {
   goToSetings(){
     this.router.navigate(['home/waiter/settings', this.cafe[0].id]);
   }
+
+  goToWaiters(){
+    this.router.navigate(['home/waiter/settings/waiters', this.cafe[0].id]);
+  }
 }

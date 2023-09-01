@@ -9,6 +9,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
 import { TestComponent } from './test/test.component';
 import { SettingsComponent } from './settings/settings.component';
+import { WaitersComponent } from './waiters/waiters.component';
 
 
 
@@ -31,8 +32,13 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'home/waiter/settings/menus/:id',
+    path: 'home/waiter/settings/menus/:id', //id je od meni itema
     component: SettingsComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'home/waiter/settings/waiters/:id', //id je od cafea
+    component: WaitersComponent,
     canActivate: [authGuard],
   },
   {

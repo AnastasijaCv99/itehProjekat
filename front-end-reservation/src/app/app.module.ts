@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
@@ -17,6 +17,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
 import { TestComponent } from './test/test.component';
 import { SettingsComponent } from './settings/settings.component';
+import { WaitersComponent } from './waiters/waiters.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SettingsComponent } from './settings/settings.component';
     CartComponent,
     TestComponent,
     SettingsComponent,
+    WaitersComponent,
     
   ],
   imports: [
@@ -39,6 +41,7 @@ import { SettingsComponent } from './settings/settings.component';
     ReactiveFormsModule,
     HttpClientModule,
     RegisterComponent,
+    FormsModule,
   ],
   providers: [
     {

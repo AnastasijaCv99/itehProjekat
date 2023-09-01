@@ -74,7 +74,7 @@ class MeniItemsController extends Controller
                 'price' => $request->price,
             ]);*/
 
-        return response()->json(['Post is updated successfully.']);
+        return response()->json(['Item is updated successfully.']);
 
         
     }
