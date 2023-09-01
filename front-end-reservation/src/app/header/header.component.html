@@ -13,7 +13,7 @@
         <a class="nav-link" *ngIf="conditionLoggedUser" routerLink="" (click)="logout()">Logout</a>
       </li>
       <li class="nav-item">
-       <a class="navbar-brand btn" *ngIf="ifPresent" routerLink="cart"> <mat-icon class="element">shopping_cart</mat-icon> {{cartItems}} </a>
+       <a class="navbar-brand btn" *ngIf="ifPresent" routerLink="" (click)="goToCart()"> <mat-icon class="element">shopping_cart</mat-icon></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" *ngIf="conditionLoggedAdmin" routerLink="" (click)="goToWaiters()" >Waiters</a>

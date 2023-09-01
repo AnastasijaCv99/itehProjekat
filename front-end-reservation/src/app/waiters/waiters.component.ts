@@ -23,23 +23,23 @@ const COLUMNS_SCHEMA = [
     label: "Email"
   },
   {
-    key: "isEdit",
-    type: "isEdit",
-    label: ""
-  },
-  {
     key: "cafe_id",
     type: "number",
-    label: ""
+    label: "Cafe id"
   },
   {
     key: "id",
     type: "number",
-    label: ""
+    label: "User id"
   },
   {
     key: "password",
     type: "text",
+    label: "Password"
+  },
+  {
+    key: "isEdit",
+    type: "isEdit",
     label: ""
   }
 ]

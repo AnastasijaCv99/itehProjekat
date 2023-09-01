@@ -7,17 +7,14 @@ import { authGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
-import { TestComponent } from './test/test.component';
 import { SettingsComponent } from './settings/settings.component';
 import { WaitersComponent } from './waiters/waiters.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { SettingsMenusComponent } from './settings-menus/settings-menus.component';
 
 
 
 const routes: Routes = [
-  {
-    path: 'test',
-    component: TestComponent
-  },
   {
     path: 'login',
     component: LoginComponent
@@ -27,8 +24,8 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'home/waiter/settings/:id',
-    component: TestComponent, //promeniti ovo
+    path: 'home/waiter/settings/menus/add/:id',
+    component: SettingsMenusComponent, 
     canActivate: [authGuard],
   },
   {
@@ -39,6 +36,11 @@ const routes: Routes = [
   {
     path: 'home/waiter/settings/waiters/:id', //id je od cafea
     component: WaitersComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'home/waiter/reservation/:id',  //id je od cafea
+    component: ReservationsComponent,
     canActivate: [authGuard],
   },
   {

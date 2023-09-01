@@ -47,6 +47,11 @@ class ReservationController extends Controller
         return response()->json(['Reservation and items is created successfully.', 'data' => $reservation]);
     }
 
+    public function showAll($id) {
+        $item = DB::select('SELECT r.table_desk, r.price, mi.drink_food_title FROM `reservation_items` ri JOIN `reservations` r on (r.id = ri.reservation_id) join menu_items mi on (ri.menu_items_id = mi.id) WHERE r.cafe_id = ?', [$id]);
+        return response()->json(['Your reservations: ', 'data'=>$item]);
+    }
+
 
     public function index()
     {

@@ -17,7 +17,6 @@ export class MenuMainComponent {
   constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService, private router:Router) {   }
 
   @Input() menus: Menu;
-  //@Output() addToCart = new EventEmitter<any>();      
   
 
   menuItem: MenuItems[];
@@ -48,10 +47,5 @@ export class MenuMainComponent {
       }
     }
 
-    /*onAddToCart() {
-      console.log(this.cartItems);
-      this.addToCart.emit();
-
-    }*/
 
 }

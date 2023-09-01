@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 	Route::put('/cafe/settings/menuItems', [MeniItemsController::class, 'edit']);
 	Route::put('/cafe/settings/users', [UserController::class, 'edit']);
 	Route::get('/cafe/{id}/users', [UserController::Class, 'showAll']);
+	Route::get('/cafe/{id}/reservations', [ReservationController::Class, 'showAll']);
 });
 
 

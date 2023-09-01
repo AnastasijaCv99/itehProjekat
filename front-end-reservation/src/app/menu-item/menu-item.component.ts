@@ -15,7 +15,6 @@ export class MenuItemComponent {
 
   @Input() menuItem: MenuItems;
   id: number;
-  @Output() addToCart = new EventEmitter<any>();
   conditionNotLogged: boolean = true;
   conditionLoggedIn: boolean = false;
 
@@ -36,9 +35,9 @@ export class MenuItemComponent {
   onAddToCart() {
     //if ((<HTMLInputElement>document.getElementById("quantity")).value == 0)
     //if((<HTMLInputElement>document.getElementById("quantity")).value != this.quantity) {
-      console.log('kolicina je', (<HTMLInputElement>document.getElementById("quantity")).value);
+      //console.log('kolicina je', (<HTMLInputElement>document.getElementById("quantity")).value);
 
-      this.menuItem.quantity = (<HTMLInputElement>document.getElementById("quantity")).value as unknown as number;
+      this.menuItem.quantity = 1;
 
       //this.menuItem.quantity = this.quantity;
       //this.menuItem.quantity = 1;
@@ -50,8 +49,6 @@ export class MenuItemComponent {
 
   onEdit(){
     
-    //sta raditi sad
-    //nek se redirectuje na neku drugu stranu, sa svim podacima ovim
     this.menuService.setItem(this.menuItem);
     this.router.navigate(['home/waiter/settings/menus/', this.menuItem.id]);
   }

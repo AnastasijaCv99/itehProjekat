@@ -16,7 +16,7 @@ export class HeaderComponent {
   constructor(private userServise: AuthService, private router:Router, private route: ActivatedRoute, private cafeService: CafeService) { };
   
   user: User;
-  @Input() cartItems: number = 0;
+  
   cafe: Cafe[];
   conditionLoggedUser: boolean = false;
   conditionLoggedAdmin: boolean = false;
@@ -26,7 +26,6 @@ export class HeaderComponent {
   ngOnInit(): void{
     this.userDefinition();
     this.cafeDefinition();
-    this.cartItems = this.cartItems; 
   }
 
   userDefinition(){
@@ -69,10 +68,19 @@ export class HeaderComponent {
   }
 
   goToSetings(){
-    this.router.navigate(['home/waiter/settings', this.cafe[0].id]);
+    this.router.navigate(['home/waiter/settings/menus/add', this.cafe[0].id]);
   }
 
   goToWaiters(){
     this.router.navigate(['home/waiter/settings/waiters', this.cafe[0].id]);
+  }
+
+  goToCart(){
+    if(localStorage.getItem('res') == null) {
+      this.router.navigate(['cart']);
+    } else {
+      this.router.navigate(['home/waiter/reservation', this.cafe[0].id]);
+    }
+    
   }
 }

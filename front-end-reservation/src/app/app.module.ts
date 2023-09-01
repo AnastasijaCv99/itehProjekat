@@ -15,10 +15,12 @@ import { UserInterceptor } from './user.interceptor';
 import { HomeComponent } from './home/home.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { CartComponent } from './cart/cart.component';
-import { TestComponent } from './test/test.component';
 import { SettingsComponent } from './settings/settings.component';
 import { WaitersComponent } from './waiters/waiters.component';
 import { HeaderColorDirective } from './directives/header-color.directive';
+import axios from 'axios';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { SettingsMenusComponent } from './settings-menus/settings-menus.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,11 @@ import { HeaderColorDirective } from './directives/header-color.directive';
     HomeComponent,
     MenuItemComponent,
     CartComponent,
-    TestComponent,
     SettingsComponent,
     WaitersComponent,
     HeaderColorDirective,
+    ReservationsComponent,
+    SettingsMenusComponent,
     
   ],
   imports: [

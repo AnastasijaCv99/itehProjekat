@@ -6,6 +6,7 @@ import { Menu } from '../interfaces/menu';
 import { Cafe } from '../interfaces/cafe';
 import { User } from '../interfaces/user';
 import { CafeService } from '../services/cafe.service';
+import { CocktailService } from '../services/cocktail.service';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,13 @@ import { CafeService } from '../services/cafe.service';
 })
 export class HomeComponent {
 
-  constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService, private cafeSerice: CafeService) {   }
+  constructor(private route: ActivatedRoute, private menuService: MenuItemService, private auth: AuthService, private cafeSerice: CafeService,
+    private cs: CocktailService) {   }
   
   menus: Menu[];
   user: User;
   cafe: Cafe;
+
 
   ngOnInit(): void{
     this.getMenuForCafe();
@@ -60,4 +63,8 @@ export class HomeComponent {
       this.cafeSerice.setCafe(this.cafe);
     })
   }
+  ajde(){
+    this.cs.getJoke();
+    }
+  
 }
