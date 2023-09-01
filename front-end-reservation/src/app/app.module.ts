@@ -18,6 +18,7 @@ import { CartComponent } from './cart/cart.component';
 import { TestComponent } from './test/test.component';
 import { SettingsComponent } from './settings/settings.component';
 import { WaitersComponent } from './waiters/waiters.component';
+import { HeaderColorDirective } from './directives/header-color.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { WaitersComponent } from './waiters/waiters.component';
     TestComponent,
     SettingsComponent,
     WaitersComponent,
+    HeaderColorDirective,
     
   ],
   imports: [
